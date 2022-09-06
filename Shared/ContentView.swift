@@ -48,13 +48,17 @@ class AppViewModel: ObservableObject{
 struct ContentView: View {
     @EnvironmentObject var viewModel: AppViewModel
     
+
+    
     
     var body: some View {
         NavigationView{
             if viewModel.signedIn {
                 MainPageView()
+                   
             } else{
                 SignInView()
+                    
             }
         }
         .onAppear{
@@ -65,71 +69,82 @@ struct ContentView: View {
 }
 
 struct SignInView: View {
+    @EnvironmentObject var viewModel: AppViewModel
     @State private var email = ""
     @State private var password = ""
-    @EnvironmentObject var viewModel: AppViewModel
+    
+    
 
     
     
     var body: some View {
             ZStack{
-                Color.cyan
+                Color.cyan.ignoresSafeArea(.all)
                 VStack(spacing:20){
                     Spacer(minLength: 50)
                     Text("1FIT")
                         .foregroundColor(.white)
                         .font(.system(size: 57, weight: .bold))
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 20)
-                            .padding()
-                            .foregroundColor(.white)
-                            .frame(height: 450)
-                        VStack{
-                             Text("Авторизация")
-                                .font(.system(size: 40, weight: .bold))
-                                .padding(.top, 30)
-                                
-                            TextField("Email", text: $email)
-                                .disableAutocorrection(true)
-                                .autocapitalization(.none)
-                                .keyboardType(.emailAddress)
+                    VStack {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 20)
                                 .padding()
-                                .background(Color(.secondarySystemBackground))
-                                .cornerRadius(15)
-                            SecureField("password", text: $password)
-                                .disableAutocorrection(true)
-                                .autocapitalization(.none)
-                                .padding()
-                                .background(Color(.secondarySystemBackground))
-                                .cornerRadius(15)
-                            Button(action: {
-                                guard !email.isEmpty, !password.isEmpty else{
-                                    return
-                                }
-                                viewModel.signIn(email: email, password: password)
-                            }){
-                                Text("продолжить")
-                                    .bold()
-                                    .frame(width: 160, height: 30, alignment: .center)
-                                    .background(Color(.blue))
-                                    .cornerRadius(10)
-                                    .foregroundColor(.white)
+                                .foregroundColor(.white)
+                                .frame(height: 450)
+                            VStack{
+                                 Text("Авторизация")
+                                    .font(.system(size: 40, weight: .bold))
+                                    .padding(.bottom, 30)
                                     
-                            }.padding()
-                            Text("У вас нет аккаунта?")
-                                .font(.system(size: 20))
-                            NavigationLink("зарегестрируйтесь", destination: SignUpView()).padding()
-                        
+                                VStack {
+                                    TextField("Email", text: $email)
+                                        .disableAutocorrection(true)
+                                        .autocapitalization(.none)
+                                        .keyboardType(.emailAddress)
+                                        .padding()
+                                        .background(Color(.secondarySystemBackground))
+                                    .cornerRadius(15)
+                                SecureField("password", text: $password)
+                                    .disableAutocorrection(true)
+                                    .autocapitalization(.none)
+                                    .padding()
+                                    .background(Color(.secondarySystemBackground))
+                                    .cornerRadius(15)
+                                }.padding(.horizontal, 7)
+                                
+                                Button(action: {
+                                    guard !email.isEmpty, !password.isEmpty else{
+                                        return
+                                    }
+                                    viewModel.signIn(email: email, password: password)
+                                }){
+                                    Text("продолжить")
+                                        .font(.system(size: 20, weight: .bold))
+                                        .frame(width: 200, height: 50, alignment: .center)
+                                        .background(Color(.blue))
+                                        .cornerRadius(10)
+                                        .foregroundColor(.white)
+                                        
+                                }.padding()
+                                VStack {
+                                    Text("У вас нет аккаунта?")
+                                        .font(.system(size: 20))
+                                        .padding(.bottom, 1)
+                                    NavigationLink("зарегестрируйтесь", destination: SignUpView()).padding(.top,1)
+                                }
+                                
                             
-                        }.padding()
-                        
-                        
+                                
+                            }.padding()
+                            
+                            
+                        }
                     }
                                         
                         Spacer(minLength: 50)
                 }
             
-            }.ignoresSafeArea()
+            }
                 .navigationTitle("Авторизация")
                 .navigationBarHidden(true)
     
@@ -140,5 +155,6 @@ struct SignInView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(AppViewModel())
     }
 }

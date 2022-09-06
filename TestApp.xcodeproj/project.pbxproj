@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15C7770128C2573C00AF6C11 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C7770028C2573C00AF6C11 /* File.swift */; };
+		15C7770228C2573C00AF6C11 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C7770028C2573C00AF6C11 /* File.swift */; };
 		15D78FE728BA716F00883824 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D78FE628BA716F00883824 /* SignUpView.swift */; };
 		15D78FE828BA716F00883824 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D78FE628BA716F00883824 /* SignUpView.swift */; };
 		15D78FEA28BAC40D00883824 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D78FE928BAC40D00883824 /* MainPageView.swift */; };
@@ -24,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15C7770028C2573C00AF6C11 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		15D78FE628BA716F00883824 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		15D78FE928BAC40D00883824 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
 		15E2604C28B96B9A000311F1 /* TestAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppApp.swift; sourceTree = "<group>"; };
@@ -68,11 +71,12 @@
 			isa = PBXGroup;
 			children = (
 				15E2604C28B96B9A000311F1 /* TestAppApp.swift */,
-				15E2604D28B96B9A000311F1 /* ContentView.swift */,
 				15E260AD28BA6D67000311F1 /* GoogleService-Info.plist */,
 				15E2604E28B96B9D000311F1 /* Assets.xcassets */,
+				15E2604D28B96B9A000311F1 /* ContentView.swift */,
 				15D78FE628BA716F00883824 /* SignUpView.swift */,
 				15D78FE928BAC40D00883824 /* MainPageView.swift */,
+				15C7770028C2573C00AF6C11 /* File.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -201,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15C7770128C2573C00AF6C11 /* File.swift in Sources */,
 				15E2605E28B96B9D000311F1 /* ContentView.swift in Sources */,
 				15E2605C28B96B9D000311F1 /* TestAppApp.swift in Sources */,
 				15D78FEA28BAC40D00883824 /* MainPageView.swift in Sources */,
@@ -212,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15C7770228C2573C00AF6C11 /* File.swift in Sources */,
 				15E2605F28B96B9D000311F1 /* ContentView.swift in Sources */,
 				15E2605D28B96B9D000311F1 /* TestAppApp.swift in Sources */,
 				15D78FEB28BAC40D00883824 /* MainPageView.swift in Sources */,

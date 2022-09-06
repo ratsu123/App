@@ -16,61 +16,66 @@ struct SignUpView: View {
 
     var body: some View {
         ZStack{
-            Color.cyan
+            Color.cyan.ignoresSafeArea(.all)
             VStack(spacing:20){
                 Spacer()
                 Text("1FIT")
                     .foregroundColor(.white)
                     .font(.system(size: 57, weight: .bold))
-                ZStack{
-                    RoundedRectangle(cornerRadius: 20 )
-                        .padding()
-                        .foregroundColor(.white)
-                        .frame( height: 350)
-                    VStack{
-                         Text("Регистрация")
-                            .font(.system(size: 40, weight: .bold))
-                            .padding(.top)
-                            
-                        TextField("Email", text: $email)
-                            .disableAutocorrection(true)
-                            .autocapitalization(.none)
-                            .keyboardType(.emailAddress)
+                VStack {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 20 )
                             .padding()
-                            .background(Color(.secondarySystemBackground))
-                            .cornerRadius(15)
-                        SecureField("password", text: $password)
-                            .disableAutocorrection(true)
-                            .autocapitalization(.none)
-                            .padding()
-                            .background(Color(.secondarySystemBackground))
-                            .cornerRadius(15)
-                        Button(action: {
-                            guard !email.isEmpty, !password.isEmpty else{
-                                return
+                            .foregroundColor(.white)
+                            .frame( height: 350)
+                        VStack{
+                            VStack {
+                                Text("Регистрация")
+                                    .font(.system(size: 40, weight: .bold))
+                                    .padding(.bottom, 30)
                             }
-                            viewModel.signUp(email: email, password: password)
-                        }){
-                            Text("Создать аккаунт")
-                                .bold()
-                                .frame(width: 200, height: 30, alignment: .center)
-                                .background(Color(.blue))
-                                .cornerRadius(10)
-                                .foregroundColor(.white)
                                 
+                                
+                            TextField("Email", text: $email)
+                                .disableAutocorrection(true)
+                                .autocapitalization(.none)
+                                .keyboardType(.emailAddress)
+                                .padding()
+                                .background(Color(.secondarySystemBackground))
+                                .cornerRadius(15)
+                            SecureField("password", text: $password)
+                                .disableAutocorrection(true)
+                                .autocapitalization(.none)
+                                .padding()
+                                .background(Color(.secondarySystemBackground))
+                                .cornerRadius(15)
+                            Button(action: {
+                                guard !email.isEmpty, !password.isEmpty else{
+                                    return
+                                }
+                                viewModel.signUp(email: email, password: password)
+                            }){
+                                Text("Создать аккаунт")
+                                    .font(.system(size: 20, weight: .bold))
+                                    .frame(width: 200, height: 50, alignment: .center)
+                                    .background(Color(.blue))
+                                    .cornerRadius(10)
+                                    .foregroundColor(.white)
+                                    
+                            }.padding()
+                            
+                        
+                            
                         }.padding()
                         
-                    
                         
-                    }.padding()
-                    
-                    
+                    }
                 }
                                     
-                    Spacer(minLength: 80)
+                    Spacer(minLength: 120)
             }
         
-        }.ignoresSafeArea()
+        }
     }
 }
 
